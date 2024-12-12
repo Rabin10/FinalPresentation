@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Service</title>
+</head>
+<body>
+<h1>Update Service</h1>
+<form th:action="@{/services/update}" th:object="${service}" method="post">
+    <input type="hidden" th:field="*{serviceId}" />
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required /><br>
+
+    <label for="status">Status:</label>
+    <select id="status" th:field="*{status}">
+        <option value="Pending" th:selected="${service.status == 'Pending'}">Pending</option>
+        <option value="Approved" th:selected="${service.status == 'Approved'}">Approved</option>
+        <option value="Rejected" th:selected="${service.status == 'Rejected'}">Rejected</option>
+    </select><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" th:field="*{description}" required></textarea><br>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Usage Statistics</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Usage Statistics</h1>
+<table>
+    <tr>
+        <th>Total Users</th>
+        <td id="totalUsers" th:text="${totalUsers}"></td>
+    </tr>
+    <tr>
+        <th>Total Providers</th>
+        <td id="totalProviders" th:text="${totalProviders}"></td>
+    </tr>
+    <tr>
+        <th>Total Customers</th>
+        <td id="totalCustomers" th:text="${totalCustomers}"></td>
+    </tr>
+    <tr>
+        <th>Total Services</th>
+        <td id="totalServices" th:text="${totalServices}"></td>
+    </tr>
+    <tr>
+        <th>Total Reviews</th>
+        <td id="totalReviews" th:text="${totalReviews}"></td>
+    </tr>
+</table>
+
+<!-- Update Button -->
+<form action="/statistics" method="get" style="text-align: center; margin-top: 20px;">
+    <button type="submit">Update</button>
+</form>
+
+</body>
+</html>

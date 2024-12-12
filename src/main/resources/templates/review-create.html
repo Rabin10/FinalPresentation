@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Review</title>
+</head>
+<body>
+<h1>Create New Review</h1>
+<form th:action="@{/reviews/create}" th:object="${review}" method="post">
+    <label for="content">Content:</label>
+    <textarea id="content" th:field="*{content}" placeholder="Write your review here..." required></textarea><br>
+
+    <label for="status">Status:</label>
+    <select id="status" th:field="*{status}">
+        <option value="Pending" th:selected="${review.status == 'Pending'}">Pending</option>
+        <option value="Approved" th:selected="${review.status == 'Approved'}">Approved</option>
+        <option value="Rejected" th:selected="${review.status == 'Rejected'}">Rejected</option>
+    </select><br>
+
+    <label for="serviceId">Select a Service:</label>
+    <select id="serviceId" th:field="*{service.serviceId}">
+        <option th:each="service : ${services}" th:value="${service.serviceId}" th:text="${service.name}"></option>
+    </select><br>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

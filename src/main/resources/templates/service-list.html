@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Service List</title>
+  <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+    th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #f4f4f4;
+    }
+    h1 {
+        text-align: center;
+    }
+    .no-data {
+        text-align: center;
+        font-size: 18px;
+        color: #888;
+    }
+    .action-links a {
+        margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+<h1>Service List</h1>
+
+<!-- Add Service Button -->
+<div style="margin-bottom: 20px; text-align: center;">
+  <a href="/services/createForm">Add New Service</a>
+</div>
+
+<!-- Check if the service list is empty -->
+<div th:if="${serviceList.empty}" class="no-data">
+  <p>No services found. Please add some data.</p>
+</div>
+
+<!-- Display the table if the service list is not empty -->
+<div th:if="${!serviceList.empty}">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="service : ${serviceList}">
+      <td th:text="${service.name}"></td>
+      <td th:text="${service.status}"></td>
+      <td th:text="${service.description}"></td>
+      <td class="action-links">
+        <a th:href="@{/services/update/{id}(id=${service.serviceId})}">Moderate</a>
+        <a th:href="@{/services/delete/{id}(id=${service.serviceId})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

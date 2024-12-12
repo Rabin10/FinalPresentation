@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Service</title>
+</head>
+<body>
+<h1>Create New Service</h1>
+<form th:action="@{/services/create}" th:object="${service}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required /><br>
+
+    <label for="status">Status:</label>
+    <select id="status" th:field="*{status}">
+        <option value="Pending">Pending</option>
+        <option value="Approved">Approved</option>
+        <option value="Rejected">Rejected</option>
+    </select><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" th:field="*{description}" required></textarea><br>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
